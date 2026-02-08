@@ -7,8 +7,11 @@ const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 dotenv.config();
 connectdb();
+
 app.use(express.json());
 app.use("/api/auth", require("./routes/auth.route.js"));
+app.use("/api/password", require("./routes/password.route.js"));
+
 app.get("/",authenticate, (req, res) => {
     res.json("Welcome to the Authcore API");
 });
